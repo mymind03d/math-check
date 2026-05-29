@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.6">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;base target="_top"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;ระบบสแกนใบหน้าเช็คชื่อ ป.6&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&amp;display=swap" rel="stylesheet"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script defer src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api/dist/face-api.js"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>body { font-family: 'Prompt', sans-serif; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>#video-container { position: relative; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col items-center p-4"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;header class="text-center my-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h1 class="text-3xl font-bold text-indigo-600"&gt;ระบบสแกนใบหน้าเช็คชื่อนักเรียน ป.6&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p class="text-slate-500 mt-2"&gt;โรงเรียนสาธิตมหาวิทยาลัยขอนแก่น (มอดินแดง)&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;main class="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2 class="text-lg font-medium mb-4 text-slate-700 flex items-center gap-2"&gt;🎥 กล้องสแกนใบหน้าอัตโนมัติ&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div id="video-container" class="w-full aspect-video bg-black rounded-xl overflow-hidden relative shadow-inner"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;video id="video" width="640" height="480" autoplay muted playsinline class="w-full h-full object-cover"&gt;&lt;/video&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div id="status-message" class="mt-4 p-2 px-4 rounded-full text-xs font-semibold bg-amber-50 text-amber-600 animate-pulse text-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>กำลังโหลดระบบ AI และโมเดลใบหน้า กรุณารอสักครู่...</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col justify-between"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h2 class="text-lg font-medium mb-4 text-slate-700"&gt;📝 ลงทะเบียนใบหน้า / บันทึกสถานะด้วยมือ&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="mb-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;label class="block text-sm text-slate-500 mb-1"&gt;เลือกชื่อนักเรียน&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;select id="student-select" class="w-full border border-slate-200 p-2.5 rounded-xl bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-500"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;option value=""&gt;-- กำลังโหลดรายชื่อนักเรียน --&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="grid grid-cols-2 gap-2 mb-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button onclick="registerFace()" class="bg-emerald-600 text-white py-2.5 rounded-xl font-medium hover:bg-emerald-700 transition shadow-sm"&gt;📸 ลงทะเบียนรูปหน้าใหม่&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button onclick="manualCheckInWithStatus('มาปกติ')" class="bg-blue-600 text-white py-2.5 rounded-xl font-medium hover:bg-blue-700 transition shadow-sm"&gt;✔ เช็คชื่อ "มาปกติ" (กดมือ)&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider"&gt;บันทึกสถานะอื่นๆ (ส่งไลน์หาผู้ปกครองทันที):&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="grid grid-cols-3 gap-2 mb-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button onclick="manualCheckInWithStatus('ลา')" class="bg-amber-500 text-white py-2.5 rounded-xl font-medium hover:bg-amber-600 transition shadow-sm"&gt;🟡 ลา&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button onclick="manualCheckInWithStatus('ป่วย')" class="bg-orange-500 text-white py-2.5 rounded-xl font-medium hover:bg-orange-600 transition shadow-sm"&gt;🟠 ป่วย&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button onclick="manualCheckInWithStatus('ขาด')" class="bg-rose-500 text-white py-2.5 rounded-xl font-medium hover:bg-rose-600 transition shadow-sm"&gt;🔴 ขาดเรียน&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div id="result-box" class="border-t border-slate-100 pt-4 hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;h3 class="font-bold text-emerald-700 text-xl" id="res-name"&gt;-&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p class="text-sm text-emerald-600 mt-1" id="res-detail"&gt;-&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/main&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// 🔗 วางลิงก์สคริปต์ /exec ตัวใหม่ของคุณครูตรงนี้ครับ</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const BACKEND_URL = "https://script.googleusercontent.com/macros/echo?user_content_key=AUkAhnSnBOZSeggddn-7ncan5tezCkymBgocZz0HcseMboBFxTLZYSakA1wU-B1DOtBUh1za8CvzRCmts4uDd6VM6KSeJIY8I2lCH0_4IqkGQoI-jZ9KhR2AWJngBITxQKMCFSOKpf_BV5y2VU8EH8rMrevHLiv3EPENQNbJd5EsNUfMk7SmKRQtGT3sWlN1uc34J3S2zy70JH7WuzoYtjIB2YBdjtRXzG8h-BsRpCvJsGGKuUFspGnpRP_8g07iHkrcXOLHPbT76td5yMwPcKq97VIVwoEYIw&amp;lib=Ml38aqEqIDCwOuHTerqOB3SkLkff0V_EX";<span class="Apple-converted-space"> </span></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const video = document.getElementById('video');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const statusMsg = document.getElementById('status-message');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let localStudents = [];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let faceMatcher = null;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// ฟังก์ชันส่วนกลางสำหรับเรียกคุยกับหลังบ้าน Google Sheets</p>
+<p class="p1"><span class="Apple-converted-space">    </span>async function callBackend(payload) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const response = await fetch(BACKEND_URL, {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>method: "POST",</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body: JSON.stringify(payload)</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return await response.json();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>async function initSystem() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>statusMsg.innerText = "⏳ กำลังโหลดโมเดลตรวจจับใบหน้าจากระบบ...";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const MODEL_URL = 'https://cdn.jsdelivr.net/npm/@vladmandic/face-api/model/';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>await faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>await faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>await faceapi.nets.faceRecognitionNet.loadFromUri(MODEL_URL);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>statusMsg.innerText = "⏳ โมเดลพร้อมแล้ว กำลังเชื่อมต่อกล้อง...";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>startVideo();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>loadStudents();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function startVideo() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>navigator.mediaDevices.getUserMedia({ video: { facingMode: "user", width: { ideal: 640 }, height: { ideal: 480 } } })</p>
+<p class="p1"><span class="Apple-converted-space">      </span>.then(stream =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>video.srcObject = stream;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>statusMsg.innerText = "🟢 ระบบสแกนใบหน้าพร้อมทำงานแล้วครับ";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>statusMsg.className = "mt-4 p-2 px-4 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-600 text-center";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>video.addEventListener('play', () =&gt; { setInterval(recognizeFace, 2500); });</p>
+<p class="p1"><span class="Apple-converted-space">      </span>})</p>
+<p class="p1"><span class="Apple-converted-space">      </span>.catch(err =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>statusMsg.innerText = "❌ เปิดกล้องไม่สำเร็จ กรุณากดอนุญาตให้สิทธิ์เข้าถึงกล้อง";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>statusMsg.className = "mt-4 p-2 px-4 rounded-full text-xs font-semibold bg-rose-50 text-rose-600 text-center";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>async function loadStudents() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const students = await callBackend({ action: "getStudentList" });</p>
+<p class="p1"><span class="Apple-converted-space">        </span>localStudents = students;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const select = document.getElementById('student-select');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>select.innerHTML = '&lt;option value=""&gt;-- เลือกรายชื่อนักเรียน --&lt;/option&gt;';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const labeledDescriptors = [];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>students.forEach(s =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>let opt = document.createElement('option');</p>
+<p class="p1"><span class="Apple-converted-space">          </span>opt.value = s.no;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>opt.innerText = `เลขที่ ${s.no} - ${s.name} (${s.nickname})`;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>select.appendChild(opt);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>if(s.faceToken) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">              </span>const arr = new Float32Array(JSON.parse(s.faceToken));</p>
+<p class="p1"><span class="Apple-converted-space">              </span>labeledDescriptors.push(new faceapi.LabeledFaceDescriptors(s.no.toString(), [arr]));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} catch(e) { console.error(e); }</p>
+<p class="p1"><span class="Apple-converted-space">          </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>if(labeledDescriptors.length &gt; 0) {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>faceMatcher = new faceapi.FaceMatcher(labeledDescriptors, 0.55);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} catch (err) { statusMsg.innerText = "❌ โหลดข้อมูลนักเรียนล้มเหลว"; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>async function recognizeFace() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if(!faceMatcher || isProcessing) return;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceDescriptors();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if(detections.length &gt; 0) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>detections.forEach(detection =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const bestMatch = faceMatcher.findBestMatch(detection.descriptor);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>if(bestMatch.label !== 'unknown') {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const student = localStudents.find(s =&gt; s.no == bestMatch.label);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if(student) triggerCheckIn(student, null);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>let isProcessing = false;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>async function triggerCheckIn(student, customStatus = null) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if(isProcessing) return;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>isProcessing = true;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>statusMsg.innerText = `🔔 กำลังบันทึกสถานข้อมูลของ ${student.name}...`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const res = await callBackend({ action: "checkAttendance", studentData: student, customStatus: customStatus });</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const resultBox = document.getElementById('result-box');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const resultDiv = resultBox.firstElementChild;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>resultBox.classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('res-name').innerText = `🎉 ${student.name} (${student.nickname})`;</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>resultDiv.className = "p-4 border rounded-xl text-center ";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if(res.studentStatus === "มาปกติ") resultDiv.classList.add("bg-emerald-50", "border-emerald-200", "text-emerald-700");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>else if(res.studentStatus === "สาย") resultDiv.classList.add("bg-yellow-50", "border-yellow-200", "text-yellow-700");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>else if(res.studentStatus === "ลา" || res.studentStatus === "ป่วย") resultDiv.classList.add("bg-amber-50", "border-amber-200", "text-amber-700");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>else resultDiv.classList.add("bg-rose-50", "border-rose-200", "text-rose-700");</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('res-detail').innerText = `บันทึกสถานะ: ${res.studentStatus} สำเร็จ เวลา: ${res.time} น.`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>statusMsg.innerText = `✔ บันทึกเวลาเรียนสำเร็จแล้ว`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>setTimeout(() =&gt; { isProcessing = false; }, 4000);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} catch (err) { statusMsg.innerText = "❌ บันทึกผลล้มเหลว"; isProcessing = false; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>async function registerFace() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const studentNo = document.getElementById('student-select').value;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if(!studentNo) { alert("กรุณาเลือกรายชื่อนักเรียนก่อนครับ"); return; }</p>
+<p class="p1"><span class="Apple-converted-space">      </span>statusMsg.innerText = "📸 กำลังประมวลผลจัดเก็บพิกัดใบหน้า...";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const detection = await faceapi.detectSingleFace(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceDescriptor();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>if(detection) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const tokenArray = Array.from(detection.descriptor);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const res = await callBackend({ action: "saveFaceToken", studentNo: studentNo, faceTokenString: JSON.stringify(tokenArray) });</p>
+<p class="p1"><span class="Apple-converted-space">          </span>alert(res.message);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>loadStudents();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} catch(err) { alert("❌ ลงทะเบียนล้มเหลว"); }</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} else { alert("❌ ตรวจไม่พบใบหน้า กรุณายืนหน้าตรงแล้วลองใหม่ครับ"); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function manualCheckInWithStatus(selectedStatus) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const studentNo = document.getElementById('student-select').value;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if(!studentNo) { alert("กรุณาเลือกชื่อนักเรียนก่อนครับคุณครู"); return; }</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const student = localStudents.find(s =&gt; s.no == studentNo);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if(student) triggerCheckIn(student, selectedStatus);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>window.onload = initSystem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
